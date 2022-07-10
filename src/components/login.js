@@ -1,6 +1,7 @@
+import { Navigate, useNavigate } from "react-router-dom";
+
 import Spinner from "./Spinner";
 import auth from "../auth";
-import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 
 export default function Login() {
@@ -20,7 +21,9 @@ export default function Login() {
     else setError("Double Check Your Details");
   };
 
-  return (
+  return auth.isAuthenticated() ? (
+    <Navigate replace to="/" />
+  ) : (
     <div>
       <div className="min-h-screen bg-gray-50 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
         <div className="sm:mx-auto sm:w-full sm:max-w-md">

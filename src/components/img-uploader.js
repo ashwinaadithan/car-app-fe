@@ -1,3 +1,4 @@
+import Spinner from "./Spinner";
 import { uploadImages } from "../api";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
@@ -5,9 +6,12 @@ import { useState } from "react";
 export default function ImageUploader({ setShowModal, ticketId }) {
   const navigate = useNavigate();
   const [images, setImages] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   const handleUploadImages = async () => {
+    setLoading(true);
     await uploadImages(ticketId, images);
+    setLoading(false);
     setImages([]);
     navigate(`/ticket/${ticketId}`);
   };
@@ -84,9 +88,10 @@ export default function ImageUploader({ setShowModal, ticketId }) {
             <button
               onClick={handleUploadImages}
               type="button"
-              disabled={!images.length}
+              disabled={!images.length || loading}
               className="w-full bg-indigo-600 px-4 py-2 border border-transparent rounded-md flex items-center justify-center text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:w-auto sm:inline-flex"
             >
+              {loading && <Spinner />}
               Upload
             </button>
           </div>
