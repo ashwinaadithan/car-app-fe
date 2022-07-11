@@ -1,7 +1,7 @@
 import auth from "./auth";
 import axios from "axios";
 
-const API_URL = "http://localhost:4000";
+const API_URL = "https://car-app-be.netlify.app";
 
 // auth
 
