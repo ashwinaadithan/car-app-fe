@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 
+import AdminForm from "./adminform";
 import { HiHashtag } from "react-icons/hi";
+import auth from "../auth";
 import { getTicketById } from "../api";
 import moment from "moment";
 import { useParams } from "react-router-dom";
@@ -9,6 +11,7 @@ const TicketDetails = ({}) => {
   const { id } = useParams();
   const [ticket, setTicket] = useState(null);
   const [selectedImage, setSelectedImage] = useState(0);
+  const [showCloseTicketForm, setShowCloseTicketForm] = useState(false);
 
   useEffect(() => {
     const fetchTicket = async () => {
@@ -21,8 +24,6 @@ const TicketDetails = ({}) => {
 
     fetchTicket();
   }, [id]);
-
-  console.log(ticket, id);
 
   return ticket ? (
     <div className="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
@@ -80,11 +81,20 @@ const TicketDetails = ({}) => {
           </span>
         </div>
       </div>
-      <div className="flex justify-end">
-        <button className="p-2 bg-red-400 text-white rounded cursor-pointer">
-          Close Ticket
-        </button>
-      </div>
+      {auth.user.role === "ADMIN" && (
+        <div className="flex justify-end">
+          <button
+            onClick={() => setShowCloseTicketForm(true)}
+            className="p-2 bg-red-400 text-white rounded cursor-pointer"
+          >
+            Close Ticket
+          </button>
+        </div>
+      )}
+
+      {showCloseTicketForm && (
+        <AdminForm id={id} setShowModal={setShowCloseTicketForm} />
+      )}
     </div>
   ) : (
     <div>Loading...</div>

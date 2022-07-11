@@ -72,3 +72,14 @@ export const getTicketById = async (id) => {
     },
   });
 };
+
+export const closeTicket = async (id, data) => {
+  if (!auth.token) return;
+
+  return await axios.post(`${API_URL}/ticket/${id}/close`, data, {
+    headers: {
+      Authorization: `Bearer ${auth.token}`,
+      "Access-Control-Allow-Origin": "*",
+    },
+  });
+};
