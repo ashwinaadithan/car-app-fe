@@ -19,25 +19,7 @@ export default function Footer(){
         
           <div class="px-5 py-2">
             <a href="#" class="text-base text-gray-500 hover:text-gray-900">
-              Jobs
-            </a>
-          </div>
-        
-          <div class="px-5 py-2">
-            <a href="#" class="text-base text-gray-500 hover:text-gray-900">
-              Press
-            </a>
-          </div>
-        
-          <div class="px-5 py-2">
-            <a href="#" class="text-base text-gray-500 hover:text-gray-900">
               Accessibility
-            </a>
-          </div>
-        
-          <div class="px-5 py-2">
-            <a href="#" class="text-base text-gray-500 hover:text-gray-900">
-              Partners
             </a>
           </div>
         
@@ -81,7 +63,7 @@ export default function Footer(){
         
       </div>
       <p class="mt-8 text-center text-base text-gray-400">
-        © 2020 Workflow, Inc. All rights reserved.
+        © 2022, Inc. All rights reserved.
       </p>
     </div>
   </footer>
