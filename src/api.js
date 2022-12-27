@@ -17,6 +17,38 @@ export const signin = async (username, password) => {
   );
 };
 
+
+export const signup = async (
+  full_name,
+  username,
+  email,
+  password,
+  pincode,
+  state,
+  city,
+  address1,
+  address2 = "",
+  landmark = "",
+  role = "customer"
+) => {
+  return await axios.post(
+    `${API_URL}/auth/signup`,
+    {
+      full_name,
+      username,
+      email,
+      password,
+      role,
+      address: { address1, address2, landmark, city, pincode, state },
+    },
+    {
+      headers: {
+        "Access-Control-Allow-Origin": "*",
+      },
+    }
+  );
+};
+
 // tickets
 
 export const getAllTickets = async () => {

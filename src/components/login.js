@@ -14,7 +14,7 @@ export default function Login() {
 
   const handleLogin = async () => {
     setLoading(true);
-    const isLoggedIn = await auth.login(username, password, remember);
+    const isLoggedIn = await auth.login({ username, password, remember });
     setLoading(false);
 
     if (isLoggedIn) navigate("/");
